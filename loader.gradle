@@ -71,8 +71,8 @@ dependencies {
         }
     }
 
-    common project(path: ':common', configuration: 'namedElements')
-    shadowCommon project(path: ':common', configuration: "transformProduction${loomPlatform.capitalize()}")
+    common(project(path: ':common', configuration: 'namedElements')) { transitive false }
+    shadowCommon(project(path: ':common', configuration: "transformProduction${loomPlatform.capitalize()}")) { transitive false }
 }
 
 shadowJar {
