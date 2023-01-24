@@ -75,7 +75,9 @@ subprojects {
             inputs.property "${it.key}", "${it.value}"
         }
 
-        expand project.properties
+        filesMatching([ '*.mixins.json', 'pack.mcmeta', 'META-INF/mods.toml', 'fabric.mod.json', 'architectury.common.json' ]) {
+            expand project.properties
+        }
     }
 
     java {
