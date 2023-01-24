@@ -104,7 +104,7 @@ subprojects {
             attributes([
                     'Specification-Title': "${MOD_ID}",
                     'Specification-Vendor': 'ApexStudios',
-                    'Specification-Version': '1',
+                    'Specification-Version': "${MINECRAFT_VERSION}",
                     'Implementation-Title': "${project.name}",
                     'Implementation-Version': "${project.version}",
                     'Implementation-Vendor': 'ApexStudios',
