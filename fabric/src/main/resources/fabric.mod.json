@@ -6,51 +6,19 @@
     "description": "${MOD_DESCRIPTION}",
     "authors": [
         {
-            "name": "ApexStudios",
+            "name": "Apex - MultiPlatform-Template Owner",
             "contact": {
-                "homepage": "https://apexstudios.dev",
-                "issues": "https://discord.apexstudios.dev",
-                "sources": "https://github.com/ApexStudios-Dev/"
-            }
-        },
-        {
-            "name": "Apex - [Founder & Lead Programmer]",
-            "contact": {
-                "homepage": "https://apexmodder.xyz",
-                "issues": "https://discord.apexstudios.dev",
-                "sources": "https://github.com/ApexStudios-Dev/"
+                "homepage": "https://github.com/ApexModder/MultiPlatform-Template",
+                "issues": "https://github.com/ApexModder/MultiPlatform-Template/issues",
+                "sources": "https://github.com/ApexModder/MultiPlatform-Template"
             }
         }
     ],
     "contact": {
-        "homepage": "https://apexstudios.dev/",
-        "issues": "https://discord.apexstudios.dev",
-        "sources": "https://github.com/ApexStudios-Dev/"
+        "homepage": "https://github.com/ApexModder/MultiPlatform-Template",
+        "issues": "https://github.com/ApexModder/MultiPlatform-Template/issues",
+        "sources": "https://github.com/ApexModder/MultiPlatform-Template"
     },
-    "contributors": [
-        {
-            "name": "FantasyGaming (Viscerus) - [Co-Founder & Artist]",
-            "contact": {
-                "homepage": "https://bio.link/Viscerus",
-                "issues": "https://discord.apexstudios.dev",
-                "sources": "https://github.com/Viscerus"
-            }
-        },
-        {
-            "name": "RudySPG - [Web-Developer, Supporter, Beta Tester]",
-            "contact": {
-                "homepage": "https://github.com/RudySPG",
-                "sources": "https://github.com/RudySPG"
-            }
-        },
-        {
-            "name": "TobiSPG - [Supporter & Beta Tester]",
-            "contact": {
-                "homepage": "https://lexzandersaplan.com/",
-                "sources": "https://github.com/zanderlx"
-            }
-        }
-    ],
     "license": "${MOD_LICENSE}",
     "environment": "*",
     "entrypoints": {
@@ -65,10 +33,5 @@
         "java": ">=${JAVA_VERSION}",
         "fabric": "*",
         "architectury": ">=${ARCHITECTURY_PROD_VERSION}"
-    },
-    "custom": {
-        "modmenu": {
-            "modmenu.discord": "https://discord.apexstudios.dev/"
-        }
     }
 }

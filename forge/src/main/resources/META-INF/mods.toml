@@ -1,15 +1,18 @@
 modLoader="javafml"
 loaderVersion="[${FORGE_LOADER_VERSION},)"
 license="${MOD_LICENSE}"
-issueTrackerURL="https://discord.apexstudios.dev/"
+issueTrackerURL="https://github.com/ApexModder/MultiPlatform-Template/issues"
 
 [[mods]]
     modId="${MOD_ID}"
     version="${MOD_VERSION}"
     displayName="${MOD_NAME}"
-    # updateJSONURL="https://api.modrinth.com/updates/apexcore/forge_updates.json"
-    displayURL="https://apexstudios.dev/apexcore"
-    logoFile="banner.png"
+    # updateJSONURL="https://api.modrinth.com/updates/<MODRINTH_PROJECT_ID>/forge_updates.json"
+    displayURL="https://github.com/ApexModder/MultiPlatform-Template"
+	# Uncomment if you have a banner/logo file
+	# similar proprty exists for fabric.mod.json
+	# "icon": "banner.png" - for fabric
+    # logoFile="banner.png"
     credits="Apex - Programming"
     authors="ApexStudios"
     description="${MOD_DESCRIPTION}"
