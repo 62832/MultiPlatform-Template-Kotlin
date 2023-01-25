@@ -41,7 +41,6 @@ subprojects {
     repositories {
         mavenLocal()
         maven { url 'https://maven.parchmentmc.org' }
-        maven { url 'https://maven.apexstudios.dev' }
 
         maven {
             url 'https://www.cursemaven.com'
@@ -128,17 +127,19 @@ subprojects {
         }
 
         repositories {
-            if(System.getenv('APEX_MODS_MAVEN_USERNAME') != null && System.getenv('APEX_MODS_MAVEN_PASSWORD') != null) {
+            mavenLocal() // remove this to not publish to local maven
+            // Add your maven repo here
+            /*if(System.getenv('MY_MAVEN_USERNAME_PROP_KEY') != null && System.getenv('MY_MAVEN_PASSWORD_PROP_KEY') != null) {
                 maven {
-                    name 'ApexStudios-Maven'
-                    url 'https://maven.apexstudios.dev'
+                    name 'MyMavenRepo'
+                    url 'https://maven.my.domain'
 
                     credentials {
-                        username System.getenv('APEX_MODS_MAVEN_USERNAME')
-                        password System.getenv('APEX_MODS_MAVEN_PASSWORD')
+                        username System.getenv('MY_MAVEN_USERNAME_PROP_KEY')
+                        password System.getenv('MY_MAVEN_PASSWORD_PROP_KEY')
                     }
                 }
-            }
+            }*/
         }
     }
 }
