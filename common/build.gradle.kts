@@ -7,12 +7,12 @@ architectury {
     common(platforms)
 }
 
-val MIXIN_VERSION: String by project
-val ARCHITECTURY_DEV_VERSION: String by project
+val mixinVersion: String by project
+val architecturyDevVersion: String by project
 
 dependencies {
-    compileOnly("org.spongepowered:mixin:$MIXIN_VERSION")
-    modApi("dev.architectury:architectury:$ARCHITECTURY_DEV_VERSION")
+    compileOnly("org.spongepowered:mixin:$mixinVersion")
+    modApi("dev.architectury:architectury:$architecturyDevVersion")
 }
 
 idea.module {

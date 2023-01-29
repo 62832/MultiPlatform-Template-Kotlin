@@ -11,7 +11,7 @@ pluginManagement {
 
 include("common", "fabric", "forge")
 
-val MOD_NAME: String by settings
-val MINECRAFT_VERSION: String by settings
+val modName: String by settings
+val minecraftVersion: String by settings
 
-rootProject.name = "$MOD_NAME-$MINECRAFT_VERSION"
+rootProject.name = "$modName-$minecraftVersion"

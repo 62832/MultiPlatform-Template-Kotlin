@@ -11,13 +11,13 @@ plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2" apply false
 }
 
-val MOD_ID: String by rootProject
-val MOD_NAME: String by rootProject
-val MOD_VERSION: String by rootProject
-val MOD_GROUP: String by rootProject
+val modId: String by rootProject
+val modName: String by rootProject
+val modVersion: String by rootProject
+val modGroup: String by rootProject
 
-val MINECRAFT_VERSION: String by rootProject
-val JAVA_VERSION: String by rootProject
+val minecraftVersion: String by rootProject
+val javaVersion: String by rootProject
 
 subprojects {
     apply(plugin = "java-library")
@@ -26,11 +26,11 @@ subprojects {
     apply(plugin = "dev.architectury.loom")
     apply(plugin = "org.jetbrains.gradle.plugin.idea-ext")
 
-    extra["accessWidenerFile"] = rootProject.file("common/src/main/resources/$MOD_ID.accesswidener")
+    extra["accessWidenerFile"] = rootProject.file("common/src/main/resources/$modId.accesswidener")
 
-    group = "$MOD_GROUP.${project.name}"
-    version = "$MOD_VERSION+$MINECRAFT_VERSION"
-    base.archivesName.set("$MOD_ID-${project.name}")
+    group = "$modGroup.${project.name}"
+    version = "$modVersion+$minecraftVersion"
+    base.archivesName.set("$modId-${project.name}")
 
     sourceSets.test {
         java.srcDirs( )
@@ -38,7 +38,7 @@ subprojects {
     }
 
     configure<ArchitectPluginExtension> {
-        minecraft = MINECRAFT_VERSION
+        minecraft = minecraftVersion
     }
 
     configure<LoomGradleExtensionAPI> {
@@ -67,17 +67,17 @@ subprojects {
     }
 
     dependencies {
-        "minecraft"("com.mojang:minecraft:$MINECRAFT_VERSION")
+        "minecraft"("com.mojang:minecraft:$minecraftVersion")
 
         "mappings"(project.extensions.getByName<LoomGradleExtensionAPI>("loom").layered {
             officialMojangMappings()
 
-            val PARCHMENT_MAPPINGS: String? by rootProject
-            val PARCHMENT_MINECRAFT_VERSION: String? by rootProject
+            val parchmentMappings: String? by rootProject
+            val parchmentMinecraftVersion: String? by rootProject
 
-            if (PARCHMENT_MAPPINGS != null) {
-                val mcVersion = PARCHMENT_MINECRAFT_VERSION ?: MINECRAFT_VERSION
-                parchment("org.parchmentmc.data:parchment-$mcVersion:$PARCHMENT_MAPPINGS@zip")
+            if (parchmentMappings != null) {
+                val mcVersion = parchmentMinecraftVersion ?: minecraftVersion
+                parchment("org.parchmentmc.data:parchment-$mcVersion:$parchmentMappings@zip")
             }
         })
 
@@ -98,7 +98,7 @@ subprojects {
 
         java {
             toolchain {
-                languageVersion.set(JavaLanguageVersion.of(JAVA_VERSION))
+                languageVersion.set(JavaLanguageVersion.of(javaVersion))
             }
 
             withSourcesJar()
@@ -106,11 +106,11 @@ subprojects {
 
         withType<JavaCompile> {
             options.encoding = "UTF-8"
-            options.release.set(JavaLanguageVersion.of(JAVA_VERSION).asInt())
+            options.release.set(JavaLanguageVersion.of(javaVersion).asInt())
 
             javaToolchains {
                 compilerFor {
-                    languageVersion.set(JavaLanguageVersion.of(JAVA_VERSION))
+                    languageVersion.set(JavaLanguageVersion.of(javaVersion))
                 }
             }
         }
@@ -118,8 +118,8 @@ subprojects {
         jar {
             manifest {
                 attributes(
-                        "Specification-Title" to MOD_ID,
-                        "Specification-Version" to MINECRAFT_VERSION,
+                        "Specification-Title" to modId,
+                        "Specification-Version" to minecraftVersion,
                         "Specification-Vendor" to "ApexStudios",
                         "Implementation-Title" to project.name,
                         "Implementation-Version" to project.version.toString(),

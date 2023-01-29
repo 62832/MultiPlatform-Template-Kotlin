@@ -33,42 +33,33 @@ loom {
                 extraAccessWideners.add accessWidenerFile.name
             }
 
-            if(file("src/main/resources/${MOD_ID}.mixins.json").exists()) {
-                mixinConfig "${MOD_ID}.mixins.json"
+            if(file("src/main/resources/${modId}.mixins.json").exists()) {
+                mixinConfig "${modId}.mixins.json"
             }
 
-            if(getRootProject().file("common/src/main/resources/${MOD_ID}-common.mixins.json").exists()) {
-                mixinConfig "${MOD_ID}-common.mixins.json"
+            if(getRootProject().file("common/src/main/resources/${modId}-common.mixins.json").exists()) {
+                mixinConfig "${modId}-common.mixins.json"
             }
 
             dataGen {
-                mod "${MOD_ID}"
+                mod "${modId}"
             }
         }
     }
 }
 
 dependencies {
-    if(loomPlatform == 'fabric') {
-        modImplementation "net.fabricmc:fabric-loader:${FABRIC_LOADER_VERSION}"
-        modApi "net.fabricmc.fabric-api:fabric-api:${FABRIC_API_VERSION}+${MINECRAFT_VERSION}"
+    if (loomPlatform == 'fabric') {
+        modImplementation "net.fabricmc:fabric-loader:${fabricLoaderVersion}"
+        modApi "net.fabricmc.fabric-api:fabric-api:${fabricApiVersion}+${minecraftVersion}"
 
-        modApi("dev.architectury:architectury-fabric:${ARCHITECTURY_DEV_VERSION}") {
+        modApi("dev.architectury:architectury-fabric:${architecturyDevVersion}") {
             exclude group: 'net.fabricmc'
             exclude group: 'net.fabricmc.fabric-api'
         }
-    } else if(loomPlatform == 'forge') {
-        forge "net.minecraftforge:forge:${MINECRAFT_VERSION}-${FORGE_VERSION}"
-        modApi "dev.architectury:architectury-forge:${ARCHITECTURY_DEV_VERSION}"
-    } else if(loomPlatform == 'quilt') {
-        modImplementation "org.quiltmc:quilt-loader:${QUILT_LOADER_VERSION}"
-        modApi "org.quiltmc:qsl:${QUILT_LIB_VERSION}+${MINECRAFT_VERSION}"
-        modApi "org.quiltmc.quilted-fabric-api:quilted-fabric-api:${QUILT_FAPI_VERSION}+${FABRIC_API_VERSION}-${MINECRAFT_VERSION}"
-
-        modApi("dev.architectury:architectury-fabric:${ARCHITECTURY_DEV_VERSION}") {
-            exclude group: 'net.fabricmc'
-            exclude group: 'net.fabricmc.fabric-api'
-        }
+    } else if (loomPlatform == 'forge') {
+        forge "net.minecraftforge:forge:${minecraftVersion}-${forgeVersion}"
+        modApi "dev.architectury:architectury-forge:${architecturyDevVersion}"
     }
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
@@ -82,7 +73,7 @@ shadowJar {
 }
 
 remapJar {
-    if(loomPlatform == 'fabric' || loomPlatform == 'quilt') {
+    if (loomPlatform == 'fabric') {
         injectAccessWidener = true
     }
 
