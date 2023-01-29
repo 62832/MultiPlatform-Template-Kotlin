@@ -1,4 +1,4 @@
-apply from: '../loader.gradle'
+apply(from = rootProject.file("loader.gradle"))
 
 loom {
     runs {
