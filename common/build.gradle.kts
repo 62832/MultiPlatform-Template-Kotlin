@@ -1,23 +1,13 @@
 architectury {
-    val platforms = rootProject.subprojects
-            .filter { it.hasProperty("loom.platform") }
-            .map { it.property("loom.platform").toString() }
-
+    val platforms: List<String> by rootProject.extra
     println("Platforms: $platforms")
     common(platforms)
 }
 
-val mixinVersion: String by project
-val architecturyDevVersion: String by project
-
 dependencies {
+    val mixinVersion: String by project
+    val architecturyDevVersion: String by project
+
     compileOnly("org.spongepowered:mixin:$mixinVersion")
     modApi("dev.architectury:architectury:$architecturyDevVersion")
-}
-
-idea.module {
-    excludeDirs.addAll(listOf(
-            file(".gradle"),
-            file("build"),
-            file("run")))
 }
