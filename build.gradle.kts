@@ -25,7 +25,7 @@ val minecraftVersion: String by rootProject
 val javaVersion: String by rootProject
 
 val platforms by extra {
-    listOf("fabric", "forge")
+    property("enabledPlatforms").toString().split(',')
 }
 
 subprojects {
@@ -150,10 +150,7 @@ subprojects {
                 artifactId = project.base.archivesName.get()
                 version = project.version.toString()
 
-                project.extensions.getByName<LoomGradleExtensionAPI>("loom").disableDeprecatedPomGeneration(this)
-
-                artifact(project.tasks.getByName("remapJar"))
-                artifact(project.tasks.getByName("sourcesJar"))
+                from(components["java"])
             }
         }
 

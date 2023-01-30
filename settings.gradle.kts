@@ -9,7 +9,11 @@ pluginManagement {
     }
 }
 
-include("common", "fabric", "forge")
+include("common")
+
+for (platform in providers.gradleProperty("enabledPlatforms").get().split(',')) {
+    include(platform)
+}
 
 val modName: String by settings
 val minecraftVersion: String by settings
