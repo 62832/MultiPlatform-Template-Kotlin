@@ -7,9 +7,8 @@ import net.fabricmc.loom.api.LoomGradleExtensionAPI
 plugins {
     `java-library`
     idea
-    id("org.jetbrains.gradle.plugin.idea-ext") version "1.1"
     id("architectury-plugin") version "3.4-SNAPSHOT" apply false
-    id("dev.architectury.loom") version "0.12.0-SNAPSHOT" apply false
+    id("dev.architectury.loom") version "1.0-SNAPSHOT" apply false
     id("com.github.johnrengelman.shadow") version "7.1.2" apply false
 }
 
@@ -29,11 +28,9 @@ val platforms by extra {
 }
 
 subprojects {
-    apply(plugin = "java-library")
     apply(plugin = "maven-publish")
     apply(plugin = "architectury-plugin")
     apply(plugin = "dev.architectury.loom")
-    apply(plugin = "org.jetbrains.gradle.plugin.idea-ext")
 
     group = "${property("modGroup")}.${project.name}"
     version = "${property("modVersion")}+$minecraftVersion"
